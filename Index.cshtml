@@ -1,0 +1,174 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<!-- Header and Navigation Bar -->
+<header>
+    <nav>
+        <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/Lecturer/SubmitClaim">Lecturer: Submit Claim</a></li>
+            <li><a href="/CoordinatorManager/ReviewClaims">Coordinator/Manager: Review Claims</a></li>
+            <li><a href="/HR/GenerateReports">HR: Generate Reports</a></li>
+        </ul>
+    </nav>
+</header>
+
+<!-- Hero Section -->
+<div class="hero">
+    <div>
+        <h1>Welcome to the Contract Monthly Claim System</h1>
+        <p>This system allows lecturers to submit claims, and coordinators, managers, and HR to process them effectively.</p>
+    </div>
+</div>
+
+<!-- Information Section -->
+<div class="services">
+    <h2>What We Offer</h2>
+    <div class="service-items">
+        <div class="service-item">
+            <h3>Lecturers</h3>
+            <p>Submit claims for payment and track your status.</p>
+        </div>
+        <div class="service-item">
+            <h3>Coordinators/Managers</h3>
+            <p>Review and approve claims submitted by lecturers.</p>
+        </div>
+        <div class="service-item">
+            <h3>HR</h3>
+            <p>Generate reports and manage payment processes.</p>
+        </div>
+    </div>
+</div>
+
+<!-- Footer -->
+<footer>
+    <p>&copy; 2024 Contract Monthly Claim System. All Rights Reserved.</p>
+</footer>
+
+<!-- Custom Styles -->
+<style>
+    /* Global Styles */
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+        background-color: #f4f4f9;
+        color: #333;
+    }
+
+    a {
+        text-decoration: none;
+        color: inherit;
+    }
+
+    /* Navigation Bar */
+    header {
+        background-color: #333;
+        padding: 20px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    nav ul {
+        display: flex;
+        justify-content: center;
+        list-style: none;
+    }
+
+    nav li {
+        margin: 0 15px;
+    }
+
+    nav a {
+        color: #fff;
+        font-weight: bold;
+        text-transform: uppercase;
+        font-size: 16px;
+    }
+
+    /* Hero Section */
+    .hero {
+        background-image: url('https://www.revv.so/blog/wp-content/uploads/2021/01/Contract-management-Feature.png');
+        background-size: cover;
+        background-position: center;
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        color: "black";
+    }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            margin-bottom: 30px;
+        }
+
+    .cta-button {
+        background-color: #ff6f61;
+        padding: 15px 30px;
+        font-size: 1rem;
+        border-radius: 5px;
+        transition: background-color 0.3s;
+    }
+
+        .cta-button:hover {
+            background-color: #e55949;
+        }
+
+    /* Services Section */
+    .services {
+        background-color: #fff;
+        padding: 50px 20px;
+        text-align: center;
+    }
+
+        .services h2 {
+            font-size: 2.5rem;
+            margin-bottom: 40px;
+        }
+
+    .service-items {
+        display: flex;
+        justify-content: space-around;
+        gap: 20px;
+        flex-wrap: wrap;
+    }
+
+    .service-item {
+        width: 30%;
+        background-color: #f9f9f9;
+        padding: 30px;
+        border-radius: 10px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+        .service-item h3 {
+            font-size: 1.75rem;
+            margin-bottom: 20px;
+        }
+
+        .service-item p {
+            font-size: 1rem;
+        }
+
+    /* Footer */
+    footer {
+        background-color: #333;
+        color: #fff;
+        text-align: center;
+        padding: 20px;
+        position: relative;
+        bottom: 0;
+        width: 100%;
+    }
+</style>

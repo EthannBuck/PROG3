@@ -1,0 +1,44 @@
+﻿@model IEnumerable<Microsoft.Azure.Cosmos.Table.DynamicTableEntity>
+
+<h2>Approved Claims</h2>
+
+@if (TempData["SuccessMessage"] != null)
+{
+    <div class="alert alert-success">@TempData["SuccessMessage"]</div>
+}
+
+@if (TempData["ErrorMessage"] != null)
+{
+    <div class="alert alert-danger">@TempData["ErrorMessage"]</div>
+}
+
+@if (!Model.Any())
+{
+    <p>No approved claims found.</p>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Lecturer ID</th>
+                <th>Total Amount</th>
+                <th>Submission Date</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var claim in Model)
+            {
+                <tr>
+                    <td>@claim.PartitionKey</td>
+                    <td>@claim.Properties["TotalAmount"].DoubleValue</td>
+                    <td>@claim.Properties["SubmissionDate"].DateTime?.ToString("yyyy-MM-dd")</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    <form asp-action="GenerateReport" asp-controller="HR" method="post">
+        <button type="submit" class="btn btn-success">Generate Report</button>
+    </form>
+}

@@ -1,0 +1,35 @@
+﻿@model List<PROG3.Models.ClaimEntity>
+
+@{
+    ViewData["Title"] = "HR Review Claims";
+}
+
+<h2>Review Claims for Invoice Creation</h2>
+
+<p>Select a claim to view details and print invoice.</p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Lecturer</th>
+            <th>Total Amount</th>
+            <th>Submission Date</th>
+            <th>Status</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var claim in Model)
+        {
+            <tr>
+                <td>@claim.LecturerId</td>
+                <td>@claim.TotalAmount.ToString("C")</td>
+                <td>@claim.SubmissionDate.ToString("dd/MM/yyyy")</td>
+                <td>@claim.Status</td>
+                <td>
+                    <a class="btn btn-primary" href="@Url.Action("ViewClaimDetails", "HR", new { claimId = claim.ClaimId, lecturerId = claim.LecturerId })">View Details</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

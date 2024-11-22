@@ -1,0 +1,176 @@
+﻿@model PROG3.Models.ClaimEntity
+
+@{
+    ViewData["Title"] = "Review Claim";
+}
+
+<!-- Header and Navigation Bar -->
+<header>
+    <nav>
+        <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/Lecturer/SubmitClaim">Lecturer: Submit Claim</a></li>
+            <li><a href="/CoordinatorManager/ReviewClaims">Coordinator/Manager: Review Claims</a></li>
+            <li><a href="/HR/GenerateReports">HR: Generate Reports</a></li>
+        </ul>
+    </nav>
+</header>
+
+<!-- Review Claim Section -->
+<div class="services">
+    <h2>Review Claim</h2>
+
+    <div class="claim-details">
+        <h4>Claim Details</h4>
+        <p><strong>Lecturer ID:</strong> @Model.LecturerId</p>
+        <p><strong>Total Amount:</strong> @Model.TotalAmount.ToString("R")</p>
+        <p><strong>Submission Date:</strong> @Model.SubmissionDate.ToString("dd/MM/yyyy")</p>
+        <p><strong>Status:</strong> @Model.Status</p>
+
+        <!-- Link to supporting documents if available -->
+        @if (!string.IsNullOrEmpty(Model.DocumentUrl))
+        {
+            <p>
+                <strong>Supporting Document:</strong>
+                <a href="@Model.DocumentUrl" target="_blank">View Document</a>
+            </p>
+        }
+    </div>
+
+    <!-- Action Buttons for Approve/Reject -->
+    <h5>Actions</h5>
+    <form method="post" action="@Url.Action("ReviewClaim", "CoordinatorManager")">
+        <input type="hidden" name="lecturerId" value="@Model.LecturerId" />
+        <input type="hidden" name="claimId" value="@Model.RowKey" />
+
+        <div class="button-group">
+            <button type="submit" name="action" value="approve" class="btn btn-success">Approve</button>
+            <button type="submit" name="action" value="reject" class="btn btn-danger">Reject</button>
+        </div>
+    </form>
+</div>
+
+<!-- Footer -->
+<footer>
+    <p>&copy; 2024 Contract Monthly Claim System. All Rights Reserved.</p>
+</footer>
+
+<!-- Custom Styles -->
+<style>
+    /* Global Styles */
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+        background: linear-gradient(135deg, #f4f4f9, #e0e0e0);
+        color: #333;
+    }
+
+    a {
+        text-decoration: none;
+        color: inherit;
+    }
+
+    /* Navigation Bar */
+    header {
+        background-color: #333;
+        padding: 20px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    nav ul {
+        display: flex;
+        justify-content: center;
+        list-style: none;
+    }
+
+    nav li {
+        margin: 0 15px;
+    }
+
+    nav a {
+        color: #fff;
+        font-weight: bold;
+        text-transform: uppercase;
+        font-size: 16px;
+    }
+
+    /* Services Section */
+    .services {
+        background-color: #fff;
+        padding: 50px 20px;
+        text-align: center;
+        margin-top: 20px;
+    }
+
+        .services h2 {
+            font-size: 2.5rem;
+            margin-bottom: 40px;
+        }
+
+    /* Claim Details Section */
+    .claim-details {
+        background-color: #f9f9f9;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        margin-bottom: 30px;
+    }
+
+        .claim-details p {
+            font-size: 1.1rem;
+            margin-bottom: 10px;
+        }
+
+        .claim-details strong {
+            font-weight: bold;
+        }
+
+    /* Action Buttons */
+    .button-group {
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+    }
+
+        .button-group button {
+            padding: 15px 30px;
+            font-size: 1rem;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+            width: 150px;
+        }
+
+    .btn-success {
+        background-color: #28a745;
+        border: none;
+    }
+
+    .btn-danger {
+        background-color: #dc3545;
+        border: none;
+    }
+
+    .btn-success:hover {
+        background-color: #218838;
+    }
+
+    .btn-danger:hover {
+        background-color: #c82333;
+    }
+
+    /* Footer */
+    footer {
+        background-color: #333;
+        color: #fff;
+        text-align: center;
+        padding: 20px;
+        position: relative;
+        bottom: 0;
+        width: 100%;
+    }
+</style>
